@@ -1,0 +1,19 @@
+<h1>Home#index</h1>
+
+<% if @login_user.nil? %>
+    <p>Please Login. If you do not have your account, please sign-up.</p>
+    <%= link_to 'Login', 'users/login' %></br>
+    <%= link_to 'Sign-up', 'users/new' %></br>
+    <% else %>
+    <%= 'Login name: [' + @login_user.name + ']' %></br>
+    <h3>---Menu----------------------------------</h3>
+    <%= link_to 'Logout','users/logout' %></br>
+    <%= link_to 'Post new', 'posts/new' %></br>
+    <%= link_to 'View user index', 'users' %></br>
+    <h3>---Your Timeline------------------------</h3>
+<% end %>
+
+
+<% @posts.each do |post| %>
+    <p><%= '[' + post.user.name + '] ' + post.content %></p>
+<% end %>
